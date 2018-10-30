@@ -1,13 +1,22 @@
 package com.fx;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 
+@TableName("city")
 public class City implements Serializable {
 
     private static final long serialVersionUID = -7277614016500164858L;
+    @TableId("id")
     private int id;
-    private String name;
+    @TableField("name")
+    private String namex;
+    @TableField("district")
     private String district;
+    @TableField("population")
     private String population;
 
     public int getId() {
@@ -18,12 +27,12 @@ public class City implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNamex() {
+        return namex;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNamex(String namex) {
+        this.namex = namex;
     }
 
     public String getDistrict() {
@@ -42,13 +51,5 @@ public class City implements Serializable {
         this.population = population;
     }
 
-    @Override
-    public String toString() {
-        return "City{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", district='" + district + '\'' +
-                ", population='" + population + '\'' +
-                '}';
-    }
+
 }
