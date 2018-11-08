@@ -26,21 +26,7 @@ public class App
     public static void main( String[] args ) throws IOException {
         ApplicationContext applicationContext= new ClassPathXmlApplicationContext("applicationContext.xml");
         CityMapper cityMapper= applicationContext.getBean(CityMapper.class);
-        City city= cityMapper.selectById(1);
-        //List<City> cityList=cityMapper.selectList(null);
-        Map<String,Object> columnMap=new HashMap<String,Object>();
-        columnMap.put("district","Kabol2");
-        List<City> cityList=cityMapper.selectByMap(columnMap);
-        System.out.println(cityList);
-        List<Integer> idList=new ArrayList<Integer>();
-        //idList.add(1);
-        //idList.add(2);
-        /*for (int i = 1; i <=10001 ; i++) {
-            idList.add(i);
-        }
-        int count=cityMapper.deleteBatchIds(idList);
-        System.out.println("删除记录数:"+count);*/
-        List<City> cityList2=cityMapper.selectList(new QueryWrapper<City>().gt("id",2000));
-        System.out.println(cityList2);
+        IPage<City> page=cityMapper.selectPage(new Page<City>(1,2),null);
+        System.out.println(page.getRecords());
     }
 }
